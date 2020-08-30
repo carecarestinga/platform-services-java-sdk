@@ -29,14 +29,12 @@ import com.ibm.cloud.platform_services.configuration_governance.v1.model.GetRule
 import com.ibm.cloud.platform_services.configuration_governance.v1.model.ListAttachmentsOptions;
 import com.ibm.cloud.platform_services.configuration_governance.v1.model.ListRulesOptions;
 import com.ibm.cloud.platform_services.configuration_governance.v1.model.Rule;
-import com.ibm.cloud.platform_services.configuration_governance.v1.model.RuleCondition;
 import com.ibm.cloud.platform_services.configuration_governance.v1.model.RuleConditionSingleProperty;
 import com.ibm.cloud.platform_services.configuration_governance.v1.model.RuleList;
 import com.ibm.cloud.platform_services.configuration_governance.v1.model.RuleRequest;
 import com.ibm.cloud.platform_services.configuration_governance.v1.model.RuleRequiredConfigMultiplePropertiesConditionAnd;
 import com.ibm.cloud.platform_services.configuration_governance.v1.model.RuleRequiredConfigSingleProperty;
 import com.ibm.cloud.platform_services.configuration_governance.v1.model.RuleScope;
-import com.ibm.cloud.platform_services.configuration_governance.v1.model.RuleTargetAttribute;
 import com.ibm.cloud.platform_services.configuration_governance.v1.model.TargetResource;
 import com.ibm.cloud.platform_services.configuration_governance.v1.model.UpdateAttachmentOptions;
 import com.ibm.cloud.platform_services.configuration_governance.v1.model.UpdateRuleOptions;
@@ -46,7 +44,6 @@ import com.ibm.cloud.sdk.core.util.CredentialUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Map;
 
@@ -258,8 +255,6 @@ public class ConfigurationGovernanceExamples {
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
     }
 
-    System.out.println("lalalalala");
-
     try {
       // begin-update_attachment
       RuleScope includedScope = new RuleScope.Builder()
@@ -318,6 +313,8 @@ public class ConfigurationGovernanceExamples {
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
     }
 
+    log("Configuration Governance example tests complete");
+    System.exit(0);  // This is here because the test seems to hang on cleanup
   }
 
   static void cleanRules(ConfigurationGovernance service, String accountId, String label) {
